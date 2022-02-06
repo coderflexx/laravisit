@@ -2,9 +2,9 @@
 
 namespace Coderflex\Laravisit\Tests;
 
+use Coderflex\Laravisit\LaravisitServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Coderflex\Laravisit\LaravisitServiceProvider;
 
 class TestCase extends Orchestra
 {
