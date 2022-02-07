@@ -10,10 +10,9 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
  */
 trait Visitable
 {
-
     /**
      * Has Visits relationship many to many relationship
-     * 
+     *
      * @return \Illuminate\Database\Eloquent\Relations\MorphToMany
      */
     public function visits(): MorphToMany
