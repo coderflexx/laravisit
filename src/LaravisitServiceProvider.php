@@ -2,9 +2,9 @@
 
 namespace Coderflex\Laravisit;
 
+use Coderflex\Laravisit\Commands\LaravisitCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Coderflex\Laravisit\Commands\LaravisitCommand;
 
 class LaravisitServiceProvider extends PackageServiceProvider
 {
