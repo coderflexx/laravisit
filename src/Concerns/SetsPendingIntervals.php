@@ -40,8 +40,8 @@ trait SetsPendingIntervals
             $method = self::$intervalsFunc[$name];
 
             $this->interval = Carbon::now($timezone)->$method();
-            return $this;
 
+            return $this;
         } catch (\Throwable $th) {
             return __('Error: Method :name does not exists,  :message', [
                 'name' => $name,
@@ -52,7 +52,7 @@ trait SetsPendingIntervals
 
     /**
      * Set Custom Interval
-     * 
+     *
      * @return self
      */
     public function customInterval(Carbon $interval): self
