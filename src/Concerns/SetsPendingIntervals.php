@@ -2,6 +2,8 @@
 
 namespace Coderflex\Laravisit\Concerns;
 
+use Carbon\Carbon;
+
 /**
  * Pending Intervals TraitName
  */
@@ -14,25 +16,48 @@ trait SetsPendingIntervals
     protected $interval;
 
     /**
-     * Set Hourly Intervals
-     *
-     * @return self
+     * Interval available functions
+     * key (method) => the name of carbon interval method
+     * @var array
      */
-    public function hourlyIntervals(): self
-    {
-        $this->interval = now()->subHour();
+    protected static $intervalsFunc = [
+        'hourlyIntervals' => 'subHour',
+        'dailyIntervals' => 'subDay',
+        'weeklyIntervals' => 'subWeek',
+        'monthlyIntervals' => 'subMonth',
+        'yearlyIntervals' => 'subYear',
+    ];
 
-        return $this;
+    /**
+     * Set Time Intervals
+     *
+     * @return mixed
+     */
+    public function __call($name, $arguments): mixed
+    {
+        try {
+            $timezone = count($arguments) ? $arguments[0] : null;
+            $method = self::$intervalsFunc[$name];
+
+            $this->interval = Carbon::now($timezone)->$method();
+            return $this;
+
+        } catch (\Throwable $th) {
+            return __('Error: Method :name does not exists,  :message', [
+                'name' => $name,
+                'message' => $th->getMessage(),
+            ]);
+        }
     }
 
     /**
-     * Set Daily Intervals
-     *
+     * Set Custom Interval
+     * 
      * @return self
      */
-    public function dailyIntervals(): self
+    public function customInterval(Carbon $interval): self
     {
-        $this->interval = now()->subDay();
+        $this->interval = $interval;
 
         return $this;
     }
