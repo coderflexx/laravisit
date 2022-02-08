@@ -3,13 +3,20 @@
 namespace Coderflex\Laravisit\Concerns;
 
 use Coderflex\Laravisit\Models\Visit;
+use Coderflex\Laravisit\PendingVisit;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 /**
  * Has Visits Relation
  */
-trait Visitable
+trait HasVisits
 {
+
+    public function visit()
+    {
+        return new PendingVisit($this);
+    }
+
     /**
      * Has Visits relationship many to many relationship
      *

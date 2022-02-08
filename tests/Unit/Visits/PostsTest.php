@@ -8,7 +8,7 @@ it('can create a post', function () {
     expect($post->count())->toEqual(1);
 });
 
-it('can fetch the name of a post', function () {
+it('has a name', function () {
     $post = Post::factory()->create(['name' => 'Laravel']);
 
     expect($post->name)->toEqual('Laravel');

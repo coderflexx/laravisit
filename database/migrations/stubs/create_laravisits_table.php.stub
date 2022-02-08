@@ -6,15 +6,28 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
     public function up()
     {
-        $table = config('laravisit.table_name');
-
-        Schema::create($table, function (Blueprint $table) {
+        Schema::create('laravisits', function (Blueprint $table) {
             $table->id();
             $table->morphs('visitable');
             $table->json('data');
             $table->timestamps();
         });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('laravisits');
     }
 };

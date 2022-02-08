@@ -19,7 +19,7 @@ class LaravisitServiceProvider extends PackageServiceProvider
             ->name('laravisit')
             ->hasConfigFile()
             ->hasViews()
-            ->hasMigration('create_laravisit_table')
+            ->hasMigration('create_laravisits_table')
             ->hasCommand(LaravisitCommand::class);
     }
 }
