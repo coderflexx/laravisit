@@ -2,23 +2,20 @@
 
 namespace Coderflex\Laravisit\Concerns;
 
-use Carbon\Carbon;
-
 /**
  * Pending Intervals TraitName
  */
 trait SetsPendingIntervals
 {
     /**
-     * @var \Carbon\Carbon $interval
-     * 
+     * @var \Carbon\Carbon
+     *
      */
     protected $interval;
 
-
     /**
      * Set Hourly Intervals
-     * 
+     *
      * @return self
      */
     public function hourlyIntervals(): self
@@ -30,7 +27,7 @@ trait SetsPendingIntervals
 
     /**
      * Set Daily Intervals
-     * 
+     *
      * @return self
      */
     public function dailyIntervals(): self
@@ -39,6 +36,4 @@ trait SetsPendingIntervals
 
         return $this;
     }
-
-
 }

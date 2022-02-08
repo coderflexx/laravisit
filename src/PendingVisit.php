@@ -10,8 +10,8 @@ class PendingVisit
 {
     use SetsPendingIntervals;
     /**
-     * @var array $attributes
-     * 
+     * @var array
+     *
      */
     protected $attributes = [];
 
@@ -22,7 +22,7 @@ class PendingVisit
 
     /**
      * Build Json Columns from the given attribues
-     * 
+     *
      * @return array
      */
     protected function buildJsonColumns(): array
@@ -37,9 +37,9 @@ class PendingVisit
     /**
      * Make sure that we need to log the current record or not
      * based on the creation
-     * 
+     *
      * @param Visit $visit
-     * @return boolean
+     * @return bool
      */
     protected function shouldBeLoggedAgain(Visit $visit): bool
     {
@@ -61,8 +61,10 @@ class PendingVisit
                     ]);
 
         $visit->when(
-            $this->shouldBeLoggedAgain($visit), function () use ($visit) {
+            $this->shouldBeLoggedAgain($visit),
+            function () use ($visit) {
                 $visit->replicate()->save();
-        });
+            }
+        );
     }
 }

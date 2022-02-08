@@ -35,7 +35,7 @@ class TestCase extends Orchestra
 
         $migration = include __DIR__.'/../database/migrations/create_posts_table.php';
         $migration->up();
-        
+
         $migration = include __DIR__.'/../database/migrations/stubs/create_laravisits_table.php.stub';
         $migration->up();
     }

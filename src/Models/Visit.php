@@ -11,7 +11,7 @@ class Visit extends Model
      *
      * @var string
      */
-    protected $table =  "laravisits";
+    protected $table = "laravisits";
 
     /**
      * The attributes that are mass assignable.

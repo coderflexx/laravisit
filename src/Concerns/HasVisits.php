@@ -11,7 +11,6 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
  */
 trait HasVisits
 {
-
     public function visit()
     {
         return new PendingVisit($this);
