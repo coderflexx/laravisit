@@ -11,7 +11,7 @@ class VisitPresenter extends Presenter
      *
      * @return string
      */
-    public function getIp(): string
+    public function ip(): string
     {
         return $this->model->data['ip'];
     }
@@ -21,7 +21,7 @@ class VisitPresenter extends Presenter
      *
      * @return Model
      */
-    public function getUser(): Model
+    public function user(): Model
     {
         $userId = $this->model->data['user_id'];
 
