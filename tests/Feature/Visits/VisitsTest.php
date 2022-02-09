@@ -87,3 +87,14 @@ it('creates a visit with a given user', function () {
             'user_id' => $user->id,
         ]);
 });
+
+
+it('gets the associated user when creating a visit', function () {
+    $user = User::factory()->create();
+    $post = Post::factory()->create();
+
+    $post->visit()->withUser($user);
+
+    expect($post->visits->first()->presenter()->getUser->name)
+        ->toEqual($user->name);
+});
