@@ -8,8 +8,8 @@ abstract class Presenter
 {
     /**
      * Get the model Instance
-     * 
-     * @var Model $model
+     *
+     * @var Model
      */
     protected $model;
 

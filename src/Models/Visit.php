@@ -39,7 +39,7 @@ class Visit extends Model
      * @var array
      */
     protected $presenters = [
-        'default'   => VisitPresenter::class,
+        'default' => VisitPresenter::class,
     ];
 
     public function visitable()
