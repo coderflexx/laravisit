@@ -59,7 +59,6 @@ it('creates a visit with custom data', function () {
 it('excepts an error when creating a visit with an empty data', function () {
     $post = Post::factory()->create();
     $post->visit()->withData([]);
-
 })->throws(
     InvalidDataException::class,
     'The data argument cannot be empty'
@@ -88,4 +87,3 @@ it('creates a visit with a given user', function () {
             'user_id' => $user->id,
         ]);
 });
-
