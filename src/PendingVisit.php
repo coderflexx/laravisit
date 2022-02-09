@@ -3,6 +3,7 @@
 namespace Coderflex\Laravisit;
 
 use Coderflex\Laravisit\Concerns\SetsPendingIntervals;
+use Coderflex\Laravisit\Exceptions\InvalidDataException;
 use Coderflex\Laravisit\Models\Visit;
 use Illuminate\Database\Eloquent\Model;
 
@@ -26,9 +27,26 @@ class PendingVisit
      * @param string $ip
      * @return self
      */
-    public function withIP($ip = null): self
+    public function withIP(string $ip = null): self
     {
         $this->attributes['ip'] = $ip ?? request()->ip();
+
+        return $this;
+    }
+
+    /**
+     * Set IP attribute
+     *
+     * @param array $data
+     * @return self
+     */
+    public function withData(array $data): self
+    {
+        if (! count($data)) {
+            throw new InvalidDataException('The data argument cannot be empty');
+        }
+
+        $this->attributes = array_merge($this->attributes, $data);
 
         return $this;
     }

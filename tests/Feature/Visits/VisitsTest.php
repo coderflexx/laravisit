@@ -1,5 +1,6 @@
 <?php
 
+use Coderflex\Laravisit\Exceptions\InvalidDataException;
 use Coderflex\Laravisit\Tests\Models\Post;
 
 it('can create a visit', function () {
@@ -31,3 +32,26 @@ it('creates a visit with the given ip address', function () {
             'ip' => '10.10.10.10',
         ]);
 });
+
+it('creates a visit with custom data', function () {
+    $post = Post::factory()->create();
+
+    $post->visit()->withData([
+        'outside_region' => true,
+    ]);
+
+    expect($post->visits->first()->data)
+        ->toMatchArray([
+            'outside_region' => true,
+        ]);
+});
+
+it('excepts an error when creating a visit with an empty data', function () {
+    $post = Post::factory()->create();
+    $post->visit()->withData([]);
+
+})->throws(
+    InvalidDataException::class,
+    'The data argument cannot be empty'
+);
+
