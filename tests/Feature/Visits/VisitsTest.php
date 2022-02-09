@@ -20,3 +20,14 @@ it('creates a visit with the default ip address', function () {
             'ip' => request()->ip(),
         ]);
 });
+
+it('creates a visit with the given ip address', function () {
+    $post = Post::factory()->create();
+
+    $post->visit()->withIp('10.10.10.10');
+
+    expect($post->visits->first()->data)
+        ->toMatchArray([
+            'ip' => '10.10.10.10',
+        ]);
+});
