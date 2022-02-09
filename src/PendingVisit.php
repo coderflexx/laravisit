@@ -21,8 +21,8 @@ class PendingVisit
     }
 
     /**
-     * Set IP attribute 
-     * 
+     * Set IP attribute
+     *
      * @param string $ip
      * @return self
      */
@@ -60,7 +60,7 @@ class PendingVisit
         // to check if the visit model was created
         // already or found.
 
-        return !$visit->wasRecentlyCreated &&
+        return ! $visit->wasRecentlyCreated &&
             $visit->created_at->lt($this->interval);
     }
 
