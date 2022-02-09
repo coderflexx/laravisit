@@ -21,6 +21,19 @@ class PendingVisit
     }
 
     /**
+     * Set IP attribute 
+     * 
+     * @param string $ip
+     * @return self
+     */
+    public function withIP($ip = null): self
+    {
+        $this->attributes['ip'] = $ip ?? request()->ip();
+
+        return $this;
+    }
+
+    /**
      * Build Json Columns from the given attribues
      *
      * @return array
@@ -28,10 +41,10 @@ class PendingVisit
     protected function buildJsonColumns(): array
     {
         return collect($this->attributes)
-                ->mapWithKeys(
-                    fn ($value, $index) => ['data->' . $index => $value]
-                )
-                ->toArray();
+            ->mapWithKeys(
+                fn ($value, $index) => ['data->' . $index => $value]
+            )
+            ->toArray();
     }
 
     /**
@@ -47,18 +60,18 @@ class PendingVisit
         // to check if the visit model was created
         // already or found.
 
-        return ! $visit->wasRecentlyCreated &&
-                $visit->created_at->lt($this->interval);
+        return !$visit->wasRecentlyCreated &&
+            $visit->created_at->lt($this->interval);
     }
 
     public function __destruct()
     {
         $visit = $this->model
-                    ->visits()
-                    ->latest()
-                    ->firstOrCreate($this->buildJsonColumns(), [
-                        'data' => $this->attributes,
-                    ]);
+            ->visits()
+            ->latest()
+            ->firstOrCreate($this->buildJsonColumns(), [
+                'data' => $this->attributes,
+            ]);
 
         $visit->when(
             $this->shouldBeLoggedAgain($visit),
