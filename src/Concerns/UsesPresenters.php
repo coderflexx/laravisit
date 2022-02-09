@@ -3,7 +3,6 @@
 namespace Coderflex\Laravisit\Concerns;
 
 use Coderflex\Laravisit\Exceptions\PresenterException;
-use Illuminate\Support\Arr;
 
 /**
  * Uses Presenters Trait
@@ -12,7 +11,7 @@ trait UsesPresenters
 {
     /**
      * Check the given presenters value exists or not
-     * 
+     *
      * @param string $type
      * @return void
      */
