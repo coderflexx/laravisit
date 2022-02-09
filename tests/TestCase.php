@@ -33,10 +33,16 @@ class TestCase extends Orchestra
         ]);
 
 
+        // load laravisits migration
+        $migration = include __DIR__ . '/../database/migrations/stubs/create_laravisits_table.php.stub';
+        $migration->up();
+
+        // Load posts migration
         $migration = include __DIR__.'/../database/migrations/create_posts_table.php';
         $migration->up();
 
-        $migration = include __DIR__.'/../database/migrations/stubs/create_laravisits_table.php.stub';
+        // load users migration
+        $migration = include __DIR__.'/../database/migrations/create_users_table.php';
         $migration->up();
     }
 }

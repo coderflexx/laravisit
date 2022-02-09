@@ -25,7 +25,7 @@ class PendingVisit
      * Set IP attribute
      *
      * @param string $ip
-     * @return self
+     * @return $this
      */
     public function withIP(string $ip = null): self
     {
@@ -38,7 +38,7 @@ class PendingVisit
      * Set IP attribute
      *
      * @param array $data
-     * @return self
+     * @return $this
      */
     public function withData(array $data): self
     {
@@ -47,6 +47,19 @@ class PendingVisit
         }
 
         $this->attributes = array_merge($this->attributes, $data);
+
+        return $this;
+    }
+
+    /**
+     * Set User attribute
+     *
+     * @param User $user
+     * @return $this
+     */
+    public function withUser($user = null): self
+    {
+        $this->attributes['user_id'] = $user?->id ?? auth()->id();
 
         return $this;
     }

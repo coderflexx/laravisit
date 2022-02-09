@@ -2,6 +2,7 @@
 
 use Coderflex\Laravisit\Exceptions\InvalidDataException;
 use Coderflex\Laravisit\Tests\Models\Post;
+use Coderflex\Laravisit\Tests\Models\User;
 
 it('can create a visit', function () {
     $post = Post::factory()->create();
@@ -49,7 +50,33 @@ it('creates a visit with custom data', function () {
 it('excepts an error when creating a visit with an empty data', function () {
     $post = Post::factory()->create();
     $post->visit()->withData([]);
+
 })->throws(
     InvalidDataException::class,
     'The data argument cannot be empty'
 );
+
+it('creates a visit with a default user', function () {
+    $this->actingAs($user = User::factory()->create());
+    $post = Post::factory()->create();
+
+    $post->visit()->withUser();
+
+    expect($post->visits->first()->data)
+        ->toMatchArray([
+            'user_id' => $user->id,
+        ]);
+});
+
+it('creates a visit with a given user', function () {
+    $user = User::factory()->create();
+    $post = Post::factory()->create();
+
+    $post->visit()->withUser($user);
+
+    expect($post->visits->first()->data)
+        ->toMatchArray([
+            'user_id' => $user->id,
+        ]);
+});
+
