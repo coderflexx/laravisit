@@ -34,6 +34,15 @@ it('creates a visit with the given ip address', function () {
         ]);
 });
 
+it('gets the correct ip when creating a visit', function () {
+    $post = Post::factory()->create();
+
+    $post->visit()->withIp();
+
+    expect($post->visits->first()->presenter()->getIP)
+        ->toEqual(request()->ip());
+});
+
 it('creates a visit with custom data', function () {
     $post = Post::factory()->create();
 

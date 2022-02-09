@@ -4,14 +4,14 @@ namespace Coderflex\Laravisit\Exceptions;
 
 use Exception;
 
-class InvalidDataException extends Exception
+class PresenterException extends Exception
 {
     /**
      * Exception handling message
      *
      * @var string
      */
-    protected $message = 'The incoming data was invalid';
+    protected $message = 'Presenter not found';
 
     /**
      * Exception handling status code
@@ -20,3 +20,4 @@ class InvalidDataException extends Exception
      */
     protected $code = 500;
 }
+

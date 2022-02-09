@@ -2,10 +2,14 @@
 
 namespace Coderflex\Laravisit\Models;
 
+use Coderflex\Laravisit\Concerns\UsesPresenters;
+use Coderflex\Laravisit\Presenters\VisitPresenter;
 use Illuminate\Database\Eloquent\Model;
 
 class Visit extends Model
 {
+    use UsesPresenters;
+
     /**
      * The table associated with the model.
      *
@@ -27,6 +31,15 @@ class Visit extends Model
      */
     protected $casts = [
         'data' => 'json',
+    ];
+
+    /**
+     * The classes that should be present
+     *
+     * @var array
+     */
+    protected $presenters = [
+        'default'   => VisitPresenter::class,
     ];
 
     public function visitable()
