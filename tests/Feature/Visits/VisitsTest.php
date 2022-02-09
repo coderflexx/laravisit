@@ -39,7 +39,7 @@ it('gets the correct ip when creating a visit', function () {
 
     $post->visit()->withIp();
 
-    expect($post->visits->first()->presenter()->getIP)
+    expect($post->visits->first()->present()->getIP)
         ->toEqual(request()->ip());
 });
 
@@ -95,6 +95,6 @@ it('gets the associated user when creating a visit', function () {
 
     $post->visit()->withUser($user);
 
-    expect($post->visits->first()->presenter()->getUser->name)
+    expect($post->visits->first()->present()->getUser->name)
         ->toEqual($user->name);
 });

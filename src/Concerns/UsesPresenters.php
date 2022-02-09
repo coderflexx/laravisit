@@ -16,7 +16,7 @@ trait UsesPresenters
      * @param string $type
      * @return void
      */
-    public function presenter(string $type = 'default')
+    public function present(string $type = 'default')
     {
         if (array_key_exists($type, $this->presenters)) {
             return new $this->presenters[$type]($this);
