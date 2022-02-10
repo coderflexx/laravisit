@@ -2,6 +2,8 @@
 
 namespace Coderflex\Laravisit\Concerns;
 
+use Carbon\Carbon;
+use Closure;
 use Illuminate\Database\Eloquent\Builder;
 
 /**
@@ -15,9 +17,9 @@ trait FilterByPopularityTimeFrame
      * @param Builder $builder
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeWithTotalVisitCount(Builder $builder)
+    public function scopeWithTotalVisitCount(Builder $builder): Builder
     {
-        $builder->withCount('visits as visit_count_total');
+        return $builder->withCount('visits as visit_count_total');
     }
 
     /**
@@ -26,9 +28,37 @@ trait FilterByPopularityTimeFrame
      * @param Builder $builder
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopePopularAllTime(Builder $builder)
+    public function scopePopularAllTime(Builder $builder): Builder
     {
-        $builder->withTotalVisitCount()
-                ->orderBy('visit_count_total', 'desc');
+        return $builder->withTotalVisitCount()
+                        ->orderBy('visit_count_total', 'desc');
+    }
+
+    /**
+     * Get the popular visits between two dates
+     * 
+     * @param Builder $builder
+     * @param Carbon $from
+     * @param Carbon $to
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopePopularBetween(Builder $builder, Carbon $from, Carbon $to): Builder
+    {
+        return $builder->whereHas('visits', $this->betweenScope($from, $to))
+                        ->withCount([
+                            'visits as visit_count' => $this->betweenScope($from, $from)
+                        ]);
+    }
+
+    /**
+     * Get the popular visits between two dates
+     * 
+     * @param Carbon $from
+     * @param Carbon $to
+     * @return Closure
+     */
+    protected function betweenScope(Carbon $from, Carbon $to): Closure
+    {
+        return fn ($query) => $query->whereBetween('created_at', [$from, $to]);
     }
 }

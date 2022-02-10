@@ -33,3 +33,27 @@ it('gets records popular all time', function () {
 
     expect($posts->first()->visit_count_total)->toEqual(2);
 });
+
+it('gets popular records between 2 dates', function () {
+    $posts = Post::factory()
+                ->times(2)
+                ->create();
+
+    Carbon::setTestNow(Carbon::createFromDate(2020, 10, 10));
+
+    $posts->first()->visit();
+    
+    Carbon::setTestNow();
+
+    $posts->first()->visit();
+    $posts->last()->visit();
+
+    $popularPosts = Post::popularBetween(
+                        Carbon::createFromDate(2020,10,9),
+                        Carbon::now()
+                    )->get();
+
+    expect($popularPosts->count())->toBe(1);
+    expect($popularPosts->first()->visit_count)->toEqual(1);
+
+});

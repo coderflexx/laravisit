@@ -18,6 +18,7 @@ class PendingVisit
 
     public function __construct(protected Model $model)
     {
+        // set daily intervals by default
         $this->dailyIntervals();
     }
 
