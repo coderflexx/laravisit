@@ -62,6 +62,7 @@ trait SetsPendingIntervals
         $this->interval = $interval instanceof Carbon
                             ? $interval
                             : Carbon::parse($interval);
+
         return $this;
     }
 }
