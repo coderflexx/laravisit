@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Coderflex\Laravisit\Exceptions\InvalidDataException;
 use Coderflex\Laravisit\Tests\Models\Post;
 use Coderflex\Laravisit\Tests\Models\User;
@@ -97,4 +98,18 @@ it('gets the associated user when creating a visit', function () {
 
     expect($post->visits->first()->present()->user->name)
         ->toEqual($user->name);
+});
+
+it('does note create duplicate visits with the same data', function () {
+    $post = Post::factory()->create();
+
+    $post->visit()->withData([
+        'outside_region' => true
+    ]);
+
+    $post->visit()->withData([
+        'outside_region' => true
+    ]);
+
+    expect($post->visits->first()->count())->toBe(1);
 });
