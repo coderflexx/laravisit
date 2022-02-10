@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 trait HasVisits
 {
     use FilterByPopularityTimeFrame;
-    
+
     public function visit()
     {
         return new PendingVisit($this);
