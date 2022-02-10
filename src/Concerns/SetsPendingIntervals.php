@@ -3,6 +3,7 @@
 namespace Coderflex\Laravisit\Concerns;
 
 use Carbon\Carbon;
+use DateTime;
 
 /**
  * Pending Intervals TraitName
@@ -53,12 +54,14 @@ trait SetsPendingIntervals
     /**
      * Set Custom Interval
      *
+     * @param DateTime $interval
      * @return self
      */
-    public function customInterval(Carbon $interval): self
+    public function customInterval($interval): self
     {
-        $this->interval = $interval;
-
+        $this->interval = $interval instanceof Carbon
+                            ? $interval
+                            : Carbon::parse($interval);
         return $this;
     }
 }
