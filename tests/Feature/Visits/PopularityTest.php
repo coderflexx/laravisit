@@ -18,15 +18,15 @@ it('gets records popular all time', function () {
             ->times(2)
             ->create()
             ->each->visit();
-    $popularPost  = Post::factory()->create();
+    $popularPost = Post::factory()->create();
 
-    
+
     Carbon::setTestNow(now()->subDays(2));
     $popularPost->visit();
-    
+
     Carbon::setTestNow();
     $popularPost->visit();
-    
+
     $posts = Post::popularAllTime()->get();
 
     expect($posts->count())->toBe(3);
