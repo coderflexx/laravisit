@@ -19,4 +19,16 @@ trait FilterByPopularityTimeFrame
     {
         $builder->withCount('visits as visit_count_total');
     }
+
+    /**
+     * Get the popular visits all time
+     * 
+     * @param Builder $builder
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopePopularAllTime(Builder $builder)
+    {
+        $builder->withTotalVisitCount()
+                ->orderBy('visit_count_total', 'desc');
+    }
 }
