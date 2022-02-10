@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Coderflex\Laravisit\Exceptions\InvalidDataException;
 use Coderflex\Laravisit\Tests\Models\Post;
 use Coderflex\Laravisit\Tests\Models\User;
