@@ -22,7 +22,7 @@ trait FilterByPopularityTimeFrame
 
     /**
      * Get the popular visits all time
-     * 
+     *
      * @param Builder $builder
      * @return \Illuminate\Database\Eloquent\Builder
      */
