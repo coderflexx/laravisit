@@ -209,4 +209,3 @@ it('creates visits after a non-carbon custom time frame', function () {
 
     expect($post->visits->first()->count())->toBe(1);
 });
-
