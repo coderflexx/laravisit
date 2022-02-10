@@ -11,7 +11,7 @@ trait FilterByPopularityTimeFrame
 {
     /**
      * Get the total visit count
-     * 
+     *
      * @param Builder $builder
      * @return \Illuminate\Database\Eloquent\Builder
      */
