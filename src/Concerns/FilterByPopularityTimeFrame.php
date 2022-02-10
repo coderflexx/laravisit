@@ -36,7 +36,7 @@ trait FilterByPopularityTimeFrame
 
     /**
      * Get the popular visits between two dates
-     * 
+     *
      * @param Builder $builder
      * @param Carbon $from
      * @param Carbon $to
@@ -46,13 +46,13 @@ trait FilterByPopularityTimeFrame
     {
         return $builder->whereHas('visits', $this->betweenScope($from, $to))
                         ->withCount([
-                            'visits as visit_count' => $this->betweenScope($from, $from)
+                            'visits as visit_count' => $this->betweenScope($from, $from),
                         ]);
     }
 
     /**
      * Get the popular visits between two dates
-     * 
+     *
      * @param Carbon $from
      * @param Carbon $to
      * @return Closure
