@@ -90,7 +90,7 @@ it('gets popular records last week', function () {
         ->times(2)
         ->create();
 
-    Carbon::setTestNow(now()->subWeek()->startOfWeek());
+    Carbon::setTestNow(now()->subDay(7)->startOfWeek());
     $posts->first()->visit();
 
     Carbon::setTestNow();
