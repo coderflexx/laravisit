@@ -65,7 +65,7 @@ it('gets popular records last x days', function () {
     $post->first()->visit();
 
     $popularPosts = Post::popularLastDays(6)->get();
-    
+
     expect($popularPosts->count())->toBe(1);
 });
 
