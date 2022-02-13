@@ -46,7 +46,7 @@ trait FilterByPopularityTimeFrame
     {
         return $builder->whereHas('visits', $this->betweenScope($from, $to))
                         ->withCount([
-                            'visits as visit_count' => $this->betweenScope($from, $to),
+                            'visits as visit_count_total' => $this->betweenScope($from, $to),
                         ]);
     }
 

@@ -54,5 +54,5 @@ it('gets popular records between two dates', function () {
     )->get();
 
     expect($popularPosts->count())->toBe(1);
-    expect($popularPosts->first()->visit_count)->toEqual(1);
+    expect($popularPosts->first()->visit_count_total)->toEqual(1);
 });
