@@ -56,17 +56,32 @@ it('gets popular records between two dates', function () {
 });
 
 it('gets popular records last x days', function () {
-    $posts = Post::factory()
-                ->times(2)
-                ->create();
+    $post = Post::factory()->create();
 
     Carbon::setTestNow(now()->subDays(10));
-    $posts->first()->visit();
+    $post->first()->visit();
 
     Carbon::setTestNow();
-    $posts->first()->visit();
+    $post->first()->visit();
 
     $popularPosts = Post::popularLastDays(6)->get();
     
     expect($popularPosts->count())->toBe(1);
 });
+
+it('gets popular records by this week', function () {
+    $posts = Post::factory()
+        ->times(2)
+        ->create();
+
+    Carbon::setTestNow(now()->subWeek()->subDay());
+    $posts->first()->visit();
+
+    Carbon::setTestNow();
+    $posts->last()->visit();
+
+    $posts = Post::popularThisWeek()->get();
+
+    expect($posts->count())->toBe(1);
+});
+
