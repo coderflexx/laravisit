@@ -35,6 +35,21 @@ trait FilterByPopularityTimeFrame
     }
 
     /**
+     * Get the popular visits last given days
+     *
+     * @param Builder $builder
+     * @param int $days
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopePopularLastDays(Builder $builder, int $days): Builder
+    {
+        return $builder->popularBetween(
+                            now()->subDays($days), 
+                            now()
+                        );
+    }
+
+    /**
      * Get the popular visits between two dates
      *
      * @param Builder $builder

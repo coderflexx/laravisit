@@ -40,11 +40,9 @@ it('gets popular records between two dates', function () {
                 ->create();
 
     Carbon::setTestNow(Carbon::createFromDate(2020, 10, 10));
-
     $posts->first()->visit();
 
     Carbon::setTestNow();
-
     $posts->first()->visit();
     $posts->last()->visit();
 
@@ -55,4 +53,20 @@ it('gets popular records between two dates', function () {
 
     expect($popularPosts->count())->toBe(1);
     expect($popularPosts->first()->visit_count_total)->toEqual(1);
+});
+
+it('gets popular records last x days', function () {
+    $posts = Post::factory()
+                ->times(2)
+                ->create();
+
+    Carbon::setTestNow(now()->subDays(10));
+    $posts->first()->visit();
+
+    Carbon::setTestNow();
+    $posts->first()->visit();
+
+    $popularPosts = Post::popularLastDays(6)->get();
+    
+    expect($popularPosts->count())->toBe(1);
 });
