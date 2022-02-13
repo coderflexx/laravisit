@@ -86,9 +86,9 @@ trait FilterByPopularityTimeFrame
     public function scopePopularThisMonth(Builder $builder): Builder
     {
         return $builder->popularBetween(
-                            now()->startOfMonth(),
-                            now()->endOfMonth(),
-                        );
+            now()->startOfMonth(),
+            now()->endOfMonth(),
+        );
     }
 
     /**
@@ -100,9 +100,9 @@ trait FilterByPopularityTimeFrame
     public function scopePopularLastMonth(Builder $builder): Builder
     {
         return $builder->popularBetween(
-                            now()->startOfMonth()->subMonthWithoutOverflow(),
-                            now()->subMonthWithoutOverflow()->endOfMonth()
-                        );
+            now()->startOfMonth()->subMonthWithoutOverflow(),
+            now()->subMonthWithoutOverflow()->endOfMonth()
+        );
     }
 
     /**
