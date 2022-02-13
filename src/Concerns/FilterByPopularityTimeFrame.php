@@ -44,9 +44,9 @@ trait FilterByPopularityTimeFrame
     public function scopePopularLastDays(Builder $builder, int $days): Builder
     {
         return $builder->popularBetween(
-                            now()->subDays($days), 
-                            now()
-                        );
+            now()->subDays($days),
+            now()
+        );
     }
 
     /**
