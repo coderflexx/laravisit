@@ -132,3 +132,35 @@ it('gets popular records last month', function () {
 
     expect($posts->count())->toBe(1);
 });
+
+it('gets popular records by this year', function () {
+    $posts = Post::factory()
+        ->times(2)
+        ->create();
+
+    Carbon::setTestNow(now()->subYear()->subDay());
+    $posts->first()->visit();
+
+    Carbon::setTestNow();
+    $posts->last()->visit();
+
+    $posts = Post::popularThisYear()->get();
+
+    expect($posts->count())->toBe(1);
+});
+
+it('gets popular records last year', function () {
+    $posts = Post::factory()
+        ->times(2)
+        ->create();
+
+    Carbon::setTestNow(now()->subYear()->startOfYear());
+    $posts->first()->visit();
+
+    Carbon::setTestNow();
+    $posts->last()->visit();
+
+    $posts = Post::popularLastYear()->get();
+
+    expect($posts->count())->toBe(1);
+});

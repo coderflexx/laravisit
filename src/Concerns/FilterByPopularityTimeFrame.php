@@ -106,6 +106,34 @@ trait FilterByPopularityTimeFrame
     }
 
     /**
+     * Get the popular visits this year
+     *
+     * @param Builder $builder
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopePopularThisYear(Builder $builder): Builder
+    {
+        return $builder->popularBetween(
+                            now()->startOfYear(),
+                            now()->endOfYear(),
+                        );
+    }
+
+    /**
+     * Get the popular visits last year
+     *
+     * @param Builder $builder
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopePopularLastYear(Builder $builder): Builder
+    {
+        return $builder->popularBetween(
+                            now()->startOfYear()->subYearWithoutOverflow(),
+                            now()->subYearWithoutOverflow()->endOfYear()
+                        );
+    }
+
+    /**
      * Get the popular visits between two dates
      *
      * @param Builder $builder
