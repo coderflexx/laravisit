@@ -1,4 +1,3 @@
-
 {
     "name": "coderflex/laravisit",
     "description": "This is my package laravisit",
@@ -18,10 +17,11 @@
     ],
     "require": {
         "php": "^8.0",
-        "spatie/laravel-package-tools": "^1.9.2",
-        "illuminate/contracts": "^8.0|^9.0"
+        "coderflexx/laravel-presenter": "^1.1",
+        "illuminate/contracts": "^8.0|^9.0",
+        "spatie/laravel-package-tools": "^1.9.2"
     },
-    "require-de/v": {
+    "require-dev": {
         "nunomaduro/collision": "^5.10|^6.1",
         "nunomaduro/larastan": "^1.0",
         "orchestra/testbench": "^6.23|^7.0.0",

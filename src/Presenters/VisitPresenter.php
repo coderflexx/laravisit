@@ -2,6 +2,7 @@
 
 namespace Coderflex\Laravisit\Presenters;
 
+use Coderflex\LaravelPresenter\Presenter;
 use Illuminate\Database\Eloquent\Model;
 
 class VisitPresenter extends Presenter

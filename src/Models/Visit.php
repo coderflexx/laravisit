@@ -2,11 +2,12 @@
 
 namespace Coderflex\Laravisit\Models;
 
-use Coderflex\Laravisit\Concerns\UsesPresenters;
 use Coderflex\Laravisit\Presenters\VisitPresenter;
+use Coderflex\LaravelPresenter\Concerns\CanPresent;
+use Coderflex\LaravelPresenter\Concerns\UsesPresenters;
 use Illuminate\Database\Eloquent\Model;
 
-class Visit extends Model
+class Visit extends Model implements CanPresent
 {
     use UsesPresenters;
 
