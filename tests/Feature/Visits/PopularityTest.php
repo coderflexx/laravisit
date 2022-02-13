@@ -84,4 +84,3 @@ it('gets popular records by this week', function () {
 
     expect($posts->count())->toBe(1);
 });
-

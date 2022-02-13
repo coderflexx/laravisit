@@ -58,9 +58,9 @@ trait FilterByPopularityTimeFrame
     public function scopePopularThisWeek(Builder $builder): Builder
     {
         return $builder->popularBetween(
-                            $startOfLastWeek = now()->subDay(7)->startOfWeek(),
-                            $startOfLastWeek->copy()->endOfWeek()
-                        );
+            $startOfLastWeek = now()->subDay(7)->startOfWeek(),
+            $startOfLastWeek->copy()->endOfWeek()
+        );
     }
 
     /**
