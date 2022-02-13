@@ -58,6 +58,20 @@ trait FilterByPopularityTimeFrame
     public function scopePopularThisWeek(Builder $builder): Builder
     {
         return $builder->popularBetween(
+                            now()->startOfWeek(),
+                            now()->endOfWeek(),
+                        );
+    }
+
+    /**
+     * Get the popular visits last week
+     *
+     * @param Builder $builder
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopePopularLastWeek(Builder $builder): Builder
+    {
+        return $builder->popularBetween(
                             $startOfLastWeek = now()->subDay(7)->startOfWeek(),
                             $startOfLastWeek->copy()->endOfWeek()
                         );

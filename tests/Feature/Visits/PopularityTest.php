@@ -85,3 +85,20 @@ it('gets popular records by this week', function () {
     expect($posts->count())->toBe(1);
 });
 
+it('gets popular records last week', function () {
+    $posts = Post::factory()
+        ->times(2)
+        ->create();
+
+    Carbon::setTestNow(now()->subWeek()->startOfWeek());
+    $posts->first()->visit();
+
+    Carbon::setTestNow();
+    $posts->last()->visit();
+
+    $posts = Post::popularLastWeek()->get();
+
+    expect($posts->count())->toBe(1);
+});
+
+
