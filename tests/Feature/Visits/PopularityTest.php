@@ -100,3 +100,35 @@ it('gets popular records last week', function () {
 
     expect($posts->count())->toBe(1);
 });
+
+it('gets popular records by this month', function () {
+    $posts = Post::factory()
+        ->times(2)
+        ->create();
+
+    Carbon::setTestNow(now()->subMonth()->subDay());
+    $posts->first()->visit();
+
+    Carbon::setTestNow();
+    $posts->last()->visit();
+
+    $posts = Post::popularThisMonth()->get();
+
+    expect($posts->count())->toBe(1);
+});
+
+it('gets popular records last month', function () {
+    $posts = Post::factory()
+        ->times(2)
+        ->create();
+
+    Carbon::setTestNow(now()->subMonth()->startOfMonth());
+    $posts->first()->visit();
+
+    Carbon::setTestNow();
+    $posts->last()->visit();
+
+    $posts = Post::popularLastMonth()->get();
+
+    expect($posts->count())->toBe(1);
+});
