@@ -44,9 +44,9 @@ trait FilterByPopularityTimeFrame
     public function scopePopularLastDays(Builder $builder, int $days): Builder
     {
         return $builder->popularBetween(
-            now()->subDays($days),
-            now()
-        );
+                            now()->subDays($days),
+                            now()
+                        );
     }
 
     /**
@@ -58,9 +58,9 @@ trait FilterByPopularityTimeFrame
     public function scopePopularThisWeek(Builder $builder): Builder
     {
         return $builder->popularBetween(
-            now()->startOfWeek(),
-            now()->endOfWeek(),
-        );
+                            now()->startOfWeek(),
+                            now()->endOfWeek(),
+                        );
     }
 
     /**
@@ -72,9 +72,9 @@ trait FilterByPopularityTimeFrame
     public function scopePopularLastWeek(Builder $builder): Builder
     {
         return $builder->popularBetween(
-            $startOfLastWeek = now()->subDay(7)->startOfWeek(),
-            $startOfLastWeek->copy()->endOfWeek()
-        );
+                            $startOfLastWeek = now()->subDay(7)->startOfWeek(),
+                            $startOfLastWeek->copy()->endOfWeek()
+                        );
     }
 
     /**
@@ -86,9 +86,9 @@ trait FilterByPopularityTimeFrame
     public function scopePopularThisMonth(Builder $builder): Builder
     {
         return $builder->popularBetween(
-            now()->startOfMonth(),
-            now()->endOfMonth(),
-        );
+                            now()->startOfMonth(),
+                            now()->endOfMonth(),
+                        );
     }
 
     /**
@@ -100,9 +100,9 @@ trait FilterByPopularityTimeFrame
     public function scopePopularLastMonth(Builder $builder): Builder
     {
         return $builder->popularBetween(
-            now()->startOfMonth()->subMonthWithoutOverflow(),
-            now()->subMonthWithoutOverflow()->endOfMonth()
-        );
+                            now()->startOfMonth()->subMonthWithoutOverflow(),
+                            now()->subMonthWithoutOverflow()->endOfMonth()
+                        );
     }
 
     /**
@@ -128,9 +128,9 @@ trait FilterByPopularityTimeFrame
     public function scopePopularLastYear(Builder $builder): Builder
     {
         return $builder->popularBetween(
-                            now()->startOfYear()->subYearWithoutOverflow(),
-                            now()->subYearWithoutOverflow()->endOfYear()
-                        );
+                    now()->startOfYear()->subYearWithoutOverflow(),
+                    now()->subYearWithoutOverflow()->endOfYear()
+                );
     }
 
     /**
