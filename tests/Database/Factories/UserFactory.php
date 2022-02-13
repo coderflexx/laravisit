@@ -1,6 +1,6 @@
 <?php
 
-namespace Coderflex\Laravisit\Database\Factories;
+namespace Coderflex\Laravisit\Tests\Database\Factories;
 
 use Coderflex\Laravisit\Tests\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;

@@ -17,7 +17,7 @@ class VisitPresenter extends Presenter
     }
 
     /**
-     * Get the associated User of from the model instance
+     * Get the associated User from the model instance
      *
      * @return Model
      */

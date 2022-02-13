@@ -1,6 +1,6 @@
 <?php
 
-namespace Coderflex\Laravisit\Database\Factories;
+namespace Coderflex\Laravisit\Tests\Database\Factories;
 
 use Coderflex\Laravisit\Tests\Models\Post;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -16,5 +16,4 @@ class PostFactory extends Factory
             'name' => $this->faker->name(),
         ];
     }
-
 }
