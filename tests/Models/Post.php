@@ -14,7 +14,6 @@ class Post extends Model
 
     protected $guarded = [];
 
-
     protected static function newFactory()
     {
         return PostFactory::new();
