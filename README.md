@@ -119,7 +119,7 @@ This package is coming with helpful decorate model properties, and it uses [Lara
 
 | METHOD      | SYNTAX      | DESCRIPTION | EXAMPLE     |
 | ----------- | ----------- | ----------- | ----------- |
-| `ip()` | `void` | Get the associated IP from the model instance | `$post->visits->first()->present()->id`|
+| `ip()` | `void` | Get the associated IP from the model instance | `$post->visits->first()->present()->ip`|
 | `user()` | `void` | Get the associated User from the model instance | `$post->visits->first()->present()->user->name`|
 
 ## Testing
