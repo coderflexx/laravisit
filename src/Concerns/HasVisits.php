@@ -15,7 +15,7 @@ trait HasVisits
 
     /**
      * keep track of your pages
-     * 
+     *
      * @return PendingVisit
      */
     public function visit(): PendingVisit
