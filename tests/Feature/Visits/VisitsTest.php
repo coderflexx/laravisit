@@ -5,6 +5,16 @@ use Coderflex\Laravisit\Exceptions\InvalidDataException;
 use Coderflex\Laravisit\Tests\Models\Post;
 use Coderflex\Laravisit\Tests\Models\User;
 
+it('should implements CanVisit interface', function () {
+    $post = User::factory()->create();
+
+    $post->visit();
+
+})->throws(
+    Coderflex\Laravisit\Exceptions\VisitException::class,
+    'Coderflex\Laravisit\Tests\Models\User should implements \Coderflex\Laravisit\Concerns\CanVisit interface'
+);
+
 it('can create a visit', function () {
     $post = Post::factory()->create();
 
