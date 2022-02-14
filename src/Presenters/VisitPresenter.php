@@ -33,6 +33,4 @@ class VisitPresenter extends Presenter
 
         return (new $user())->find($userId);
     }
-
-    // TODO: get total visit count presenter method with tests and documentation
 }

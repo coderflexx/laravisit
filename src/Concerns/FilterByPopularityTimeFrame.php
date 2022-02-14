@@ -34,7 +34,19 @@ trait FilterByPopularityTimeFrame
                         ->orderBy('visit_count_total', 'desc');
     }
 
-    // TODO: add popular today method with tests and documentation
+    /**
+     * Get the popular visits today
+     *
+     * @param Builder $builder
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopePopularToday(Builder $builder): Builder
+    {
+        return $builder->popularBetween(
+            now()->startOfDay(),
+            now()->endOfDay()
+        );
+    }
 
     /**
      * Get the popular visits last given days

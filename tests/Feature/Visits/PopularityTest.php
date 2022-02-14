@@ -55,6 +55,21 @@ it('gets popular records between two dates', function () {
     expect($popularPosts->first()->visit_count_total)->toEqual(1);
 });
 
+it('gets popular records today', function () {
+    $post = Post::factory()->times(2)->create();
+
+    Carbon::setTestNow(now()->subDays(2));
+    $post->first()->visit();
+    $post->last()->visit();
+
+    Carbon::setTestNow();
+    $post->first()->visit();
+
+    $popularPosts = Post::popularToday()->get();
+
+    expect($popularPosts->count())->toBe(1);
+});
+
 it('gets popular records last x days', function () {
     $post = Post::factory()->create();
 
