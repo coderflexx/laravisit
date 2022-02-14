@@ -48,7 +48,7 @@ it('gets popular records between two dates', function () {
 
     $popularPosts = Post::popularBetween(
         Carbon::createFromDate(2020, 10, 9),
-        Carbon::createFromDate(2020, 10, 11)
+        Carbon::createFromDate(2020, 10, 11),
     )->get();
 
     expect($popularPosts->count())->toBe(1);
