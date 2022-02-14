@@ -51,16 +51,17 @@ return [
 
 ### Use `HasVisits` Trait
 
-The first thing you need  to do is, to use `HasVisits` trait
+The first thing you need  to do is, to use `HasVisits` trait, and implement `CanVisit` interface.
 
 ```php
 namespace App\Models\Post;
 
+use Coderflex\Laravisit\Concerns\CanVisit;
 use Coderflex\Laravisit\Concerns\HasVisits;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+class Post extends Model implements CanVisit
 {
     ...
     use HasFactory;
