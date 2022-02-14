@@ -2,6 +2,12 @@
 
 All notable changes to `laravisit` will be documented in this file.
 
+## v1.0.2 - 2022-02-14
+
+Update:
+
+- update `composer.json`
+
 ## v1.0.1 - 2022-02-14
 
 ## Add
