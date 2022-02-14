@@ -2,7 +2,6 @@
 
 namespace Coderflex\Laravisit;
 
-use Coderflex\Laravisit\Commands\LaravisitCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -18,8 +17,6 @@ class LaravisitServiceProvider extends PackageServiceProvider
         $package
             ->name('laravisit')
             ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_laravisits_table')
-            ->hasCommand(LaravisitCommand::class);
+            ->hasMigration('create_laravisits_table');
     }
 }
