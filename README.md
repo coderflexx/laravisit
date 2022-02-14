@@ -104,7 +104,7 @@ After the visits get logged, you can retrieve the data by the following method:
 | ----------- | ----------- | ----------- | ----------- |
 | `withTotalVisitCount()` | `void` | get total visit count | `Post::withTotalVisitCount()->first()->visit_count_total` |
 | `popularAllTime()` | `void` | get popular visits all time | `Post::popularAllTime()->get()` |
-| `popularToday()` | `void` | get popular visits in the current day | `Post::popularToday(10)->get()` |
+| `popularToday()` | `void` | get popular visits in the current day | `Post::popularToday()->get()` |
 | `popularLastDays()` | int `$days` | get popular visits last given days | `Post::popularLastDays(10)->get()` |
 | `popularThisWeek()` | `void` | get popular visits this week | `Post::popularThisWeek()->get()` |
 | `popularLastWeek()` | `void` | get popular visits last week | `Post::popularLastWeek()->get()` |
