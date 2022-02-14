@@ -4,6 +4,7 @@ namespace Coderflex\Laravisit;
 
 use Coderflex\Laravisit\Concerns\SetsPendingIntervals;
 use Coderflex\Laravisit\Exceptions\InvalidDataException;
+use Coderflex\Laravisit\Exceptions\VisitException;
 use Coderflex\Laravisit\Models\Visit;
 use Illuminate\Database\Eloquent\Model;
 
@@ -18,6 +19,10 @@ class PendingVisit
 
     public function __construct(protected Model $model)
     {
+        if (!$model instanceof \Coderflex\Laravisit\Concerns\CanVisit) {
+            throw VisitException::interfaceNotImplemented($model);
+        }
+
         // set daily intervals by default
         $this->dailyIntervals();
     }

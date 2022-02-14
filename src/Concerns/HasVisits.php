@@ -13,7 +13,12 @@ trait HasVisits
 {
     use FilterByPopularityTimeFrame;
 
-    public function visit()
+    /**
+     * keep track of your pages
+     * 
+     * @return PendingVisit
+     */
+    public function visit(): PendingVisit
     {
         return new PendingVisit($this);
     }
