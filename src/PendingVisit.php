@@ -19,7 +19,7 @@ class PendingVisit
 
     public function __construct(protected Model $model)
     {
-        if (!$model instanceof \Coderflex\Laravisit\Concerns\CanVisit) {
+        if (! $model instanceof \Coderflex\Laravisit\Concerns\CanVisit) {
             throw VisitException::interfaceNotImplemented($model);
         }
 

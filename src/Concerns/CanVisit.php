@@ -6,11 +6,10 @@ interface CanVisit
 {
     /**
      * keep track of your pages
-     * 
+     *
      * @return PendingVisit
      */
     public function visit();
-
 
     /**
      * Has Visits relationship many to many relationship
