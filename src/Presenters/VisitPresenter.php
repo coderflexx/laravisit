@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class VisitPresenter extends Presenter
 {
     /**
-     * Get the associated IP of from the model instance
+     * Get the associated IP from the model instance
      *
      * @return string
      */
@@ -25,9 +25,14 @@ class VisitPresenter extends Presenter
     public function user(): Model
     {
         $userId = $this->model->data['user_id'];
+        $userNamespace  = config('laravisit.user_namespace');
 
-        $user = config('laravisit.user_namespace');
+        $user = is_null($userNamespace) || empty($userNamespace)
+                ? '\Coderflex\Laravisit\Models\User'
+                :$userNamespace;
 
         return (new $user())->find($userId);
     }
+
+    // TODO: get total visit count presenter method with tests and documentation
 }

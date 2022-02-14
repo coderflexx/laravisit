@@ -54,10 +54,10 @@ trait SetsPendingIntervals
     /**
      * Set Custom Interval
      *
-     * @param DateTime $interval
+     * @param mixed $interval
      * @return self
      */
-    public function customInterval($interval): self
+    public function customInterval(mixed $interval): self
     {
         $this->interval = $interval instanceof Carbon
                             ? $interval

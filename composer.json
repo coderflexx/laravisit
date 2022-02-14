@@ -55,10 +55,7 @@
         "laravel": {
             "providers": [
                 "Coderflex\\Laravisit\\LaravisitServiceProvider"
-            ],
-            "aliases": {
-                "Laravisit": "Coderflex\\Laravisit\\Facades\\Laravisit"
-            }
+            ]
         }
     },
     "minimum-stability": "dev",

@@ -3,13 +3,14 @@
 return [
     /*
     |--------------------------------------------------------------------------
-    | Home Path
+    | User Namespace
     |--------------------------------------------------------------------------
     |
-    | Here you may configure the path where users will get redirected during
-    | authentication or password reset when the operations are successful
-    | and the user is authenticated. You are free to change this value.
+    | This value informs Laravist which namespace you will be 
+    | selecting to get the user model instance
+    | If this value equals to null, "\Coderflex\Laravisit\Models\User" will be used 
+    | by default.
     |
     */
-    'user_namespace' => "\Coderflex\Laravisit\Tests\Models\User",
+    'user_namespace' => "\Coderflex\Laravisit\Models\User",
 ];

@@ -36,7 +36,7 @@ class PendingVisit
     }
 
     /**
-     * Set IP attribute
+     * Set Custom Data attribute
      *
      * @param array $data
      * @return $this
@@ -55,10 +55,10 @@ class PendingVisit
     /**
      * Set User attribute
      *
-     * @param User $user
+     * @param Model $user
      * @return $this
      */
-    public function withUser($user = null): self
+    public function withUser(Model $user = null): self
     {
         $this->attributes['user_id'] = $user?->id ?? auth()->id();
 
