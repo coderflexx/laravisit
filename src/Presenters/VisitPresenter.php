@@ -25,11 +25,11 @@ class VisitPresenter extends Presenter
     public function user(): Model
     {
         $userId = $this->model->data['user_id'];
-        $userNamespace  = config('laravisit.user_namespace');
+        $userNamespace = config('laravisit.user_namespace');
 
         $user = is_null($userNamespace) || empty($userNamespace)
                 ? '\Coderflex\Laravisit\Models\User'
-                :$userNamespace;
+                : $userNamespace;
 
         return (new $user())->find($userId);
     }

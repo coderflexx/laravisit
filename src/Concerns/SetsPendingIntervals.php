@@ -3,7 +3,6 @@
 namespace Coderflex\Laravisit\Concerns;
 
 use Carbon\Carbon;
-use DateTime;
 
 /**
  * Pending Intervals TraitName
