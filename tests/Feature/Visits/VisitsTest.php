@@ -9,7 +9,6 @@ it('should implements CanVisit interface', function () {
     $post = User::factory()->create();
 
     $post->visit();
-
 })->throws(
     Coderflex\Laravisit\Exceptions\VisitException::class,
     'Coderflex\Laravisit\Tests\Models\User should implements \Coderflex\Laravisit\Concerns\CanVisit interface'
