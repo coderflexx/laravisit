@@ -69,7 +69,7 @@ class Post extends Model implements CanVisit
     ...
 }
 ```
-After this step, you are reading to go, and when you need to track a page, do it like this:
+After this step, you are ready to go, and when you need to track a page, do it like this:
 
 ```php
 $post->visit();
