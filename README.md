@@ -69,13 +69,13 @@ class Post extends Model implements CanVisit
     ...
 }
 ```
-After this step, you are reading to go, and when you need to track a page, do it like this:
+After this step, you are all set, you can now count visits by using `visit` method
 
 ```php
 $post->visit();
 ```
 
-You can chain methods to the `visit` method. Here is a list of the available methods:
+You can chain methods to the `visit` method. Here are a list of the available methods:
 
 | METHOD      | SYNTAX      | DESCRIPTION | EXAMPLE     |
 | ----------- | ----------- | ----------- | ----------- |
@@ -85,14 +85,14 @@ You can chain methods to the `visit` method. Here is a list of the available met
 
 ---
 
-By default, you will have unique visits __each day__ using `dailyInterval()` method. Meaning, when the users access the page multiple times in the day time frame, you will see just `one record` related to them.
+By default, you will have unique visits __each day__ using `dailyInterval()` method. Meaning, when the users access the page multiple times in a day time frame, you will see just `one record` related to them.
 
-If you want to log users access to page with different __timeframes__, here are a bunch of useful methods:
+If you want to log users access to a page with different __timeframes__, here are a bunch of useful methods:
 
 | METHOD      | SYNTAX      | DESCRIPTION | EXAMPLE     |
 | ----------- | ----------- | ----------- | ----------- |
 | `hourlyInterval()` | `void` | Log visits each hour | `$post->visit()->hourlyIntervals()->withIp();` |
-| `dailylyInterval()` | `void` | Log visits each daily | `$post->visit()->dailylyIntervals()->withIp();` |
+| `dailylyInterval()` | `void` | Log visits each day | `$post->visit()->dailylyIntervals()->withIp();` |
 | `weeklyInterval()` | `void` | Log visits each week | `$post->visit()->weeklyIntervals()->withIp();` |
 | `monthlyInterval()` | `void` | Log visits each month | `$post->visit()->monthlyIntervals()->withIp();` |
 | `yearlyInterval()` | `void` | Log visits each year | `$post->visit()->yearlyIntervals()->withIp();` |
