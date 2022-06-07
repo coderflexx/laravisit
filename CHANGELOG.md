@@ -2,6 +2,12 @@
 
 All notable changes to `laravisit` will be documented in this file.
 
+## v1.0.3 - 2022-02-15
+
+## Update
+
+- Update `README.md`
+
 ## v1.0.2 - 2022-02-14
 
 Update:
