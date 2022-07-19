@@ -160,7 +160,7 @@ trait FilterByPopularityTimeFrame
         return $builder->whereHas('visits', $this->betweenScope($from, $to))
                         ->withCount([
                             'visits as visit_count_total' => $this->betweenScope($from, $to),
-                        ]);
+                        ])->orderBy('visit_count_total', 'desc');
     }
 
     /**
