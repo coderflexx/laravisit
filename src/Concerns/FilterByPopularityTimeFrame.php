@@ -30,7 +30,8 @@ trait FilterByPopularityTimeFrame
      */
     public function scopePopularAllTime(Builder $builder): Builder
     {
-        return $builder->withTotalVisitCount()
+        return $builder->whereHas('visits')
+                        ->withTotalVisitCount()
                         ->orderBy('visit_count_total', 'desc');
     }
 
