@@ -55,8 +55,7 @@
             "pestphp/pest-plugin": true,
             "phpstan/extension-installer": true,
             "phpstan/phpstan-deprecation-rules": true,
-            "phpstan/phpstan-phpunit": true,
-            "phpunit/phpunit": true
+            "phpstan/phpstan-phpunit": true
         }
     },
     "extra": {
