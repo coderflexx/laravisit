@@ -7,6 +7,7 @@ use Coderflex\Laravisit\Exceptions\InvalidDataException;
 use Coderflex\Laravisit\Exceptions\VisitException;
 use Coderflex\Laravisit\Models\Visit;
 use Illuminate\Database\Eloquent\Model;
+use Jaybizzle\LaravelCrawlerDetect\Facades\LaravelCrawlerDetect;
 
 class PendingVisit
 {
@@ -98,7 +99,8 @@ class PendingVisit
         // already or found.
 
         return ! $visit->wasRecentlyCreated &&
-            $visit->created_at->lt($this->interval);
+            $visit->created_at->lt($this->interval) &&
+            !LaravelCrawlerDetect::isCrawler();
     }
 
     public function __destruct()
