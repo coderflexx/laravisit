@@ -26,7 +26,7 @@ class PendingVisit
             throw VisitException::interfaceNotImplemented($model);
         }
 
-        $crawlerDetect = new CrawlerDetect(request()->headers->all(), request()->header('User-Agent'));
+        $crawlerDetect = new CrawlerDetect(null, request()->header('User-Agent'));
 
         $this->isCrawler = $crawlerDetect->isCrawler();
 
