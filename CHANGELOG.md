@@ -2,6 +2,18 @@
 
 All notable changes to `laravisit` will be documented in this file.
 
+## v1.1.0 - 2022-08-14
+
+### What's Changed
+
+- FEAT: Added `CrawlerDetect` by @juliangarcess in https://github.com/coderflexx/laravisit/pull/12
+
+### New Contributors
+
+- @juliangarcess made their first contribution in https://github.com/coderflexx/laravisit/pull/12
+
+**Full Changelog**: https://github.com/coderflexx/laravisit/compare/v1.0.3...v1.1.0
+
 ## v1.0.3 - 2022-02-15
 
 ## Update
