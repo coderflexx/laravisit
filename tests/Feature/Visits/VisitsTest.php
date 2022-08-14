@@ -225,5 +225,5 @@ it('does not create visits for crawler', function () {
     request()->headers->set('User-Agent', 'Googlebot');
     $post->visit();
 
-    expect($post->visits->first())->toBe(null);
+    expect($post->visits->count())->toBe(0);
 });

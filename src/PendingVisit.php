@@ -110,20 +110,25 @@ class PendingVisit
 
     public function __destruct()
     {
-        if (! $this->isCrawler) {
-            $visit = $this->model
-                ->visits()
-                ->latest()
-                ->firstOrCreate($this->buildJsonColumns(), [
-                    'data' => $this->attributes,
-                ]);
-
-            $visit->when(
-                $this->shouldBeLoggedAgain($visit),
-                function () use ($visit) {
-                    $visit->replicate()->save();
-                }
-            );
+        // if the current request is a crawler,
+        // we don't need to log the visit
+        // because it's not a real visitor
+        if ($this->isCrawler) {
+            return null;
         }
+
+        $visit = $this->model
+            ->visits()
+            ->latest()
+            ->firstOrCreate($this->buildJsonColumns(), [
+                'data' => $this->attributes,
+            ]);
+
+        $visit->when(
+            $this->shouldBeLoggedAgain($visit),
+            function () use ($visit) {
+                $visit->replicate()->save();
+            }
+        );
     }
 }
