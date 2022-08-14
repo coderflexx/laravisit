@@ -19,6 +19,7 @@
         "php": "^8.0",
         "coderflexx/laravel-presenter": "^1.1",
         "illuminate/contracts": "^8.0|^9.0",
+        "jaybizzle/crawler-detect": "^1.2",
         "spatie/laravel-package-tools": "^1.9.2"
     },
     "require-dev": {
@@ -49,7 +50,11 @@
         "test-coverage": "vendor/bin/pest --coverage"
     },
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "phpstan/extension-installer": true,
+            "pestphp/pest-plugin": true
+        }
     },
     "extra": {
         "laravel": {

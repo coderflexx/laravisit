@@ -7,6 +7,7 @@ use Coderflex\Laravisit\Exceptions\InvalidDataException;
 use Coderflex\Laravisit\Exceptions\VisitException;
 use Coderflex\Laravisit\Models\Visit;
 use Illuminate\Database\Eloquent\Model;
+use Jaybizzle\CrawlerDetect\CrawlerDetect;
 
 class PendingVisit
 {
@@ -17,11 +18,17 @@ class PendingVisit
      */
     protected $attributes = [];
 
+    public $isCrawler = false;
+
     public function __construct(protected Model $model)
     {
-        if (! $model instanceof \Coderflex\Laravisit\Concerns\CanVisit) {
+        if (!$model instanceof \Coderflex\Laravisit\Concerns\CanVisit) {
             throw VisitException::interfaceNotImplemented($model);
         }
+
+        $crawlerDetect = new CrawlerDetect(null, request()->header('User-Agent'));
+
+        $this->isCrawler = $crawlerDetect->isCrawler();
 
         // set daily intervals by default
         $this->dailyIntervals();
@@ -48,7 +55,7 @@ class PendingVisit
      */
     public function withData(array $data): self
     {
-        if (! count($data)) {
+        if (!count($data)) {
             throw new InvalidDataException('The data argument cannot be empty');
         }
 
@@ -97,24 +104,26 @@ class PendingVisit
         // to check if the visit model was created
         // already or found.
 
-        return ! $visit->wasRecentlyCreated &&
+        return !$visit->wasRecentlyCreated &&
             $visit->created_at->lt($this->interval);
     }
 
     public function __destruct()
     {
-        $visit = $this->model
-            ->visits()
-            ->latest()
-            ->firstOrCreate($this->buildJsonColumns(), [
-                'data' => $this->attributes,
-            ]);
+        if (!$this->isCrawler) {
+            $visit = $this->model
+                ->visits()
+                ->latest()
+                ->firstOrCreate($this->buildJsonColumns(), [
+                    'data' => $this->attributes,
+                ]);
 
-        $visit->when(
-            $this->shouldBeLoggedAgain($visit),
-            function () use ($visit) {
-                $visit->replicate()->save();
-            }
-        );
+            $visit->when(
+                $this->shouldBeLoggedAgain($visit),
+                function () use ($visit) {
+                    $visit->replicate()->save();
+                }
+            );
+        }
     }
 }

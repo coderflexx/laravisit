@@ -219,3 +219,11 @@ it('creates visits after a non-carbon custom time frame', function () {
 
     expect($post->visits->first()->count())->toBe(1);
 });
+
+it('does not create visits for crawler', function () {
+    $post = Post::factory()->create();
+    request()->headers->set('User-Agent', 'Googlebot');
+    $post->visit();
+
+    expect($post->visits->first())->toBe(null);
+});
