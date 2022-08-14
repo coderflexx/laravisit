@@ -22,7 +22,7 @@ class PendingVisit
 
     public function __construct(protected Model $model)
     {
-        if (!$model instanceof \Coderflex\Laravisit\Concerns\CanVisit) {
+        if (! $model instanceof \Coderflex\Laravisit\Concerns\CanVisit) {
             throw VisitException::interfaceNotImplemented($model);
         }
 
@@ -55,7 +55,7 @@ class PendingVisit
      */
     public function withData(array $data): self
     {
-        if (!count($data)) {
+        if (! count($data)) {
             throw new InvalidDataException('The data argument cannot be empty');
         }
 
@@ -104,13 +104,13 @@ class PendingVisit
         // to check if the visit model was created
         // already or found.
 
-        return !$visit->wasRecentlyCreated &&
+        return ! $visit->wasRecentlyCreated &&
             $visit->created_at->lt($this->interval);
     }
 
     public function __destruct()
     {
-        if (!$this->isCrawler) {
+        if (! $this->isCrawler) {
             $visit = $this->model
                 ->visits()
                 ->latest()
