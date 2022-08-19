@@ -48,6 +48,19 @@ class PendingVisit
     }
 
     /**
+     * Set Session attribute
+     *
+     * @param string $session
+     * @return $this
+     */
+    public function withSession(string $session = null): self
+    {
+        $this->attributes['session'] = $ip ?? request()->session()->getId();
+
+        return $this;
+    }
+
+    /**
      * Set Custom Data attribute
      *
      * @param array $data

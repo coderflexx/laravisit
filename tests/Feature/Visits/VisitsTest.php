@@ -44,6 +44,28 @@ it('creates a visit with the given ip address', function () {
         ]);
 });
 
+it('creates a visit with the default session id', function () {
+    $post = Post::factory()->create();
+
+    $post->visit()->withSession();
+
+    expect($post->visits->first()->data)
+        ->toMatchArray([
+            'session' => request()->session()->getId(),
+        ]);
+});
+
+it('creates a visit with the given session id', function () {
+    $post = Post::factory()->create();
+
+    $post->visit()->withSession('RSXXvRiviUu2wO3RTmLESztufikmuV2F8KSugDzu');
+
+    expect($post->visits->first()->data)
+        ->toMatchArray([
+            'session' => 'RSXXvRiviUu2wO3RTmLESztufikmuV2F8KSugDzu',
+        ]);
+});
+
 it('gets the correct ip when creating a visit', function () {
     $post = Post::factory()->create();
 
