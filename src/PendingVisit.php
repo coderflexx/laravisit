@@ -55,7 +55,7 @@ class PendingVisit
      */
     public function withSession(string $session = null): self
     {
-        $this->attributes['session'] = $ip ?? request()->session()->getId();
+        $this->attributes['session'] = $session ?? session()->getId();
 
         return $this;
     }
