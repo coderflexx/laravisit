@@ -51,7 +51,7 @@ it('creates a visit with the default session id', function () {
 
     expect($post->visits->first()->data)
         ->toMatchArray([
-            'session' => request()->session()->getId(),
+            'session' => session()->getId(),
         ]);
 });
 
