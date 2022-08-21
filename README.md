@@ -80,6 +80,7 @@ You can chain methods to the `visit` method. Here are a list of the available me
 | METHOD      | SYNTAX      | DESCRIPTION | EXAMPLE     |
 | ----------- | ----------- | ----------- | ----------- |
 | `withIp()`      | string `$ip = null`       | Set an Ip address (default `request()->ip()`)       | `$post->visit()->withIp()`       |
+| `withSession()` | string `$session = null` | Set an Session ID (default `session()->getId()`) | `$post->visit()->withSession()` |
 |`withData()` | array `$data` | Set custom data | `$post->visit()->withData(['region' => 'USA'])` |
 | `withUser()` | Model `$user = null` | Set a user model (default `auth()->user()`) | `$user->visit()->withUser()` |
 
