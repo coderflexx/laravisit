@@ -2,6 +2,15 @@
 
 All notable changes to `laravisit` will be documented in this file.
 
+## v1.2.0 - 2022-08-21
+
+### What's Changed
+
+- Enhancement by @ousid in https://github.com/coderflexx/laravisit/pull/13
+- FEAT: Added with session function by @juliangarcess in https://github.com/coderflexx/laravisit/pull/15
+
+**Full Changelog**: https://github.com/coderflexx/laravisit/compare/v1.1.0...v1.2.0
+
 ## v1.1.0 - 2022-08-14
 
 ### What's Changed
