@@ -38,7 +38,7 @@ class PendingVisit
      * Set IP attribute
      *
      * @param string $ip
-     * @return $this
+     * @return self
      */
     public function withIP(string $ip = null): self
     {
@@ -51,7 +51,7 @@ class PendingVisit
      * Set Session attribute
      *
      * @param string $session
-     * @return $this
+     * @return self
      */
     public function withSession(string $session = null): self
     {
@@ -64,7 +64,7 @@ class PendingVisit
      * Set Custom Data attribute
      *
      * @param array $data
-     * @return $this
+     * @return self
      */
     public function withData(array $data): self
     {
@@ -81,7 +81,7 @@ class PendingVisit
      * Set User attribute
      *
      * @param Model $user
-     * @return $this
+     * @return self
      */
     public function withUser(Model $user = null): self
     {
