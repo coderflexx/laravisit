@@ -2,6 +2,15 @@
 
 All notable changes to `laravisit` will be documented in this file.
 
+## v1.2.1 - 2022-08-22
+
+### What's Changed
+
+- Larastan Fix Errors by @ousid in https://github.com/coderflexx/laravisit/pull/17
+- Enhancements by @ousid in https://github.com/coderflexx/laravisit/pull/16
+
+**Full Changelog**: https://github.com/coderflexx/laravisit/compare/v1.2.0...v1.2.1
+
 ## v1.2.0 - 2022-08-21
 
 ### What's Changed
