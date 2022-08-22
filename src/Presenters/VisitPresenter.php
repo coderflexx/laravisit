@@ -14,7 +14,7 @@ class VisitPresenter extends Presenter
      */
     public function ip(): string
     {
-        return $this->model->data['ip'];
+        return $this->model->data['ip']; // @phpstan-ignore-line
     }
 
     /**
@@ -24,7 +24,7 @@ class VisitPresenter extends Presenter
      */
     public function user(): Model
     {
-        $userId = $this->model->data['user_id'];
+        $userId = $this->model->data['user_id']; // @phpstan-ignore-line
         $userNamespace = config('laravisit.user_namespace');
 
         $user = is_null($userNamespace) || empty($userNamespace)
