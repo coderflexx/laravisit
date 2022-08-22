@@ -7,6 +7,13 @@ use Coderflex\LaravelPresenter\Concerns\UsesPresenters;
 use Coderflex\Laravisit\Presenters\VisitPresenter;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Coderflex\Laravisit\Models\Visit
+ * @property int $id
+ * @property array $data
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ */
 class Visit extends Model implements CanPresent
 {
     use UsesPresenters;

@@ -7,7 +7,7 @@ interface CanVisit
     /**
      * keep track of your pages
      *
-     * @return PendingVisit
+     * @return \Coderflex\Laravisit\PendingVisit
      */
     public function visit();
 

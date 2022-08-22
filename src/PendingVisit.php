@@ -31,7 +31,7 @@ class PendingVisit
         $this->isCrawler = $crawlerDetect->isCrawler();
 
         // set daily intervals by default
-        $this->dailyIntervals();
+        $this->dailyIntervals(); // @phpstan-ignore-line
     }
 
     /**
@@ -127,9 +127,10 @@ class PendingVisit
         // we don't need to log the visit
         // because it's not a real visitor
         if ($this->isCrawler) {
-            return null;
+            return;
         }
 
+        // @phpstan-ignore-next-line
         $visit = $this->model
             ->visits()
             ->latest()
