@@ -130,6 +130,7 @@ class PendingVisit
             return;
         }
 
+        // @phpstan-ignore-next-line
         $visit = $this->model
             ->visits()
             ->latest()
