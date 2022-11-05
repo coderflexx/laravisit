@@ -93,7 +93,7 @@ If you want to log users access to a page with different __timeframes__, here ar
 | METHOD      | SYNTAX      | DESCRIPTION | EXAMPLE     |
 | ----------- | ----------- | ----------- | ----------- |
 | `hourlyInterval()` | `void` | Log visits each hour | `$post->visit()->hourlyIntervals()->withIp();` |
-| `dailylyInterval()` | `void` | Log visits each day | `$post->visit()->dailylyIntervals()->withIp();` |
+| `dailyInterval()` | `void` | Log visits each day | `$post->visit()->dailyIntervals()->withIp();` |
 | `weeklyInterval()` | `void` | Log visits each week | `$post->visit()->weeklyIntervals()->withIp();` |
 | `monthlyInterval()` | `void` | Log visits each month | `$post->visit()->monthlyIntervals()->withIp();` |
 | `yearlyInterval()` | `void` | Log visits each year | `$post->visit()->yearlyIntervals()->withIp();` |
