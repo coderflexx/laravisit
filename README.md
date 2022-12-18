@@ -4,8 +4,9 @@
 </p>
 
 [![The Latest Version on Packagist](https://img.shields.io/packagist/v/coderflexx/laravisit.svg?style=flat-square)](https://packagist.org/packages/coderflexx/laravisit)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/coderflexx/laravisit/run-tests?label=tests)](https://github.com/coderflexx/laravisit/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/coderflexx/laravisit/Check%20&%20fix%20styling?label=code%20style)](https://github.com/coderflexx/laravisit/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/coderflexx/laravisit/run-tests.yml?branch=main&label=tests)](https://github.com/coderflexx/laravisit/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/coderflexx/laravisit/phpstan.yml?branch=main&label=code%20style)](https://github.com/coderflexx/laravisit/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
+[![Total Downloads](https://img.shields.io/packagist/dt/coderflexx/laravisit.svg?style=flat-square)](https://packagist.org/packages/coderflexx/laravisit)
 
 A clean way to track your pages & understand your user's behavior
 
