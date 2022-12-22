@@ -135,13 +135,18 @@ class PendingVisit
             ->visits()
             ->latest()
             ->firstOrCreate($this->buildJsonColumns(), [
-                'data' => $this->attributes,
+                'data' => array_merge($this->attributes, ['hits' => 1]),
             ]);
 
+        if($this->shouldBeLoggedAgain($visit)){
+            $visit->replicate()->resetHits();
+            return;
+        }
+
         $visit->when(
-            $this->shouldBeLoggedAgain($visit),
+            !$visit->wasRecentlyCreated,
             function () use ($visit) {
-                $visit->replicate()->save();
+                $visit->incrementHits();
             }
         );
     }

@@ -131,7 +131,7 @@ it('gets the associated user when creating a visit', function () {
         ->toEqual($user->name);
 });
 
-it('does note create duplicate visits with the same data', function () {
+it('does note create duplicate visits with the same data, but increments hits', function () {
     $post = Post::factory()->create();
 
     $post->visit()->withData([
@@ -143,9 +143,10 @@ it('does note create duplicate visits with the same data', function () {
     ]);
 
     expect($post->visits->first()->count())->toBe(1);
+    expect($post->visits->sum('hits'))->toBe(2);
 });
 
-it('does not create visits within the same time frame', function () {
+it('does not create visits within the same time frame, but increments hits', function () {
     $post = Post::factory()->create();
 
     Carbon::setTestNow(now()->subDays(2));
@@ -158,6 +159,7 @@ it('does not create visits within the same time frame', function () {
     $post->visit();
 
     expect($post->visits->first()->count())->toBe(2);
+    expect($post->visits->sum('hits'))->toBe(3);
 });
 
 it('creates visits after an hourly time frame', function () {

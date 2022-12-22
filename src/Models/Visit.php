@@ -54,4 +54,21 @@ class Visit extends Model implements CanPresent
     {
         return $this->morphTo();
     }
+
+    public function resetHits()
+    {
+        $this->fill(['data->hits' => 1]);
+        $this->save();
+    }
+
+    public function incrementHits()
+    {
+        $this->fill(['data->hits' => $this->hits + 1]);
+        $this->save();
+    }
+
+    public function getHitsAttribute()
+    {
+        return is_numeric($this->data['hits'] ?? null) ? $this->data['hits'] : 1;
+    }
 }
