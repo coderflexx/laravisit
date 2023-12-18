@@ -133,6 +133,7 @@ class PendingVisit
         // @phpstan-ignore-next-line
         $visit = $this->model
             ->visits()
+            ->where('created_at', '>=', $this->interval)
             ->latest()
             ->firstOrCreate($this->buildJsonColumns(), [
                 'data' => $this->attributes,
