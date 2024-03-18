@@ -29,6 +29,12 @@ abstract class TestCase extends Orchestra
 
     public function setupDatabases($app)
     {
+        config()->set('database.default', 'sqlite');
+        config()->set('database.connections.sqlite', [
+            'driver' => 'sqlite',
+            'database' => ':memory:',
+        ]);
+        
         Schema::dropAllTables();
 
         // load laravisits migration
