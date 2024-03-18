@@ -4,13 +4,16 @@ namespace Coderflex\Laravisit\Tests;
 
 use Coderflex\Laravisit\LaravisitServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Schema;
 use Orchestra\Testbench\TestCase as Orchestra;
 
-class TestCase extends Orchestra
+abstract class TestCase extends Orchestra
 {
     protected function setUp(): void
     {
         parent::setUp();
+
+        $this->setupDatabases($this->app);
 
         Factory::guessFactoryNamesUsing(
             fn (string $modelName) => 'Coderflex\\Laravisit\\Database\\Factories\\'.class_basename($modelName).'Factory'
@@ -24,14 +27,9 @@ class TestCase extends Orchestra
         ];
     }
 
-    public function getEnvironmentSetUp($app)
+    public function setupDatabases($app)
     {
-        config()->set('database.default', 'sqlite');
-        config()->set('database.connections.sqlite', [
-            'driver' => 'sqlite',
-            'database' => ':memory:',
-        ]);
-
+        Schema::dropAllTables();
 
         // load laravisits migration
         $migration = include __DIR__ . '/../database/migrations/create_laravisits_table.php.stub';
