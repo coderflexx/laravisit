@@ -34,7 +34,7 @@ abstract class TestCase extends Orchestra
             'driver' => 'sqlite',
             'database' => ':memory:',
         ]);
-        
+
         Schema::dropAllTables();
 
         // load laravisits migration
