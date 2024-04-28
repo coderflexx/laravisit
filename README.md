@@ -21,7 +21,11 @@ composer require coderflexx/laravisit
 You can publish the config file with:
 
 ```bash
+# linux
 php artisan vendor:publish --provider="Coderflex\\Laravisit\\LaravisitServiceProvider"
+
+# windows
+php artisan vendor:publish --provider="Coderflex\Laravisit\LaravisitServiceProvider"
 ```
 
 then, run database migration
