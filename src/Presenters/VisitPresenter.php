@@ -27,6 +27,6 @@ class VisitPresenter extends Presenter
                 ? '\Coderflex\Laravisit\Models\User'
                 : $userNamespace;
 
-        return (new $user)->find($userId);
+        return (new $user())->find($userId);
     }
 }
