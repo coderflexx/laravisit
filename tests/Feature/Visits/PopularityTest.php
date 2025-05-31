@@ -143,9 +143,9 @@ it('gets popular records last month', function () {
     Carbon::setTestNow();
     $posts->last()->visit();
 
-    $posts = Post::popularLastMonth()->get();
+    $popularPosts = Post::popularLastMonth()->get();
 
-    expect($posts->count())->toBe(1);
+    expect($popularPosts->count())->toBe(1);
 });
 
 it('gets popular records by this year', function () {
