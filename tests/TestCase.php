@@ -38,7 +38,7 @@ abstract class TestCase extends Orchestra
         Schema::dropAllTables();
 
         // load laravisits migration
-        $migration = include __DIR__ . '/../database/migrations/create_laravisits_table.php.stub';
+        $migration = include __DIR__.'/../database/migrations/create_laravisits_table.php.stub';
         $migration->up();
 
         // Load posts migration

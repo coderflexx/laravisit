@@ -9,8 +9,6 @@ class VisitException extends Exception
 {
     /**
      * Method for Presenter Implementation absence on the model
-     * @param Model $model
-     * @return self
      */
     public static function interfaceNotImplemented(Model $model): self
     {

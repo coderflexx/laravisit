@@ -9,8 +9,6 @@ class VisitPresenter extends Presenter
 {
     /**
      * Get the associated IP from the model instance
-     *
-     * @return string
      */
     public function ip(): string
     {
@@ -19,8 +17,6 @@ class VisitPresenter extends Presenter
 
     /**
      * Get the associated User from the model instance
-     *
-     * @return Model
      */
     public function user(): Model
     {
