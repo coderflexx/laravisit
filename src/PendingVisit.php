@@ -12,9 +12,9 @@ use Jaybizzle\CrawlerDetect\CrawlerDetect;
 class PendingVisit
 {
     use SetsPendingIntervals;
+
     /**
      * @var array
-     *
      */
     protected $attributes = [];
 
@@ -36,11 +36,8 @@ class PendingVisit
 
     /**
      * Set IP attribute
-     *
-     * @param string $ip
-     * @return self
      */
-    public function withIP(string $ip = null): self
+    public function withIP(?string $ip = null): self
     {
         $this->attributes['ip'] = $ip ?? request()->ip();
 
@@ -49,11 +46,8 @@ class PendingVisit
 
     /**
      * Set Session attribute
-     *
-     * @param string $session
-     * @return self
      */
-    public function withSession(string $session = null): self
+    public function withSession(?string $session = null): self
     {
         $this->attributes['session'] = $session ?? session()->getId();
 
@@ -62,9 +56,6 @@ class PendingVisit
 
     /**
      * Set Custom Data attribute
-     *
-     * @param array $data
-     * @return self
      */
     public function withData(array $data): self
     {
@@ -79,11 +70,8 @@ class PendingVisit
 
     /**
      * Set User attribute
-     *
-     * @param Model $user
-     * @return self
      */
-    public function withUser(Model $user = null): self
+    public function withUser(?Model $user = null): self
     {
         $this->attributes['user_id'] = $user?->id ?? auth()->id();
 
@@ -92,14 +80,12 @@ class PendingVisit
 
     /**
      * Build Json Columns from the given attribues
-     *
-     * @return array
      */
     protected function buildJsonColumns(): array
     {
         return collect($this->attributes)
             ->mapWithKeys(
-                fn ($value, $index) => ['data->' . $index => $value]
+                fn ($value, $index) => ['data->'.$index => $value]
             )
             ->toArray();
     }
@@ -107,9 +93,6 @@ class PendingVisit
     /**
      * Make sure that we need to log the current record or not
      * based on the creation
-     *
-     * @param Visit $visit
-     * @return bool
      */
     protected function shouldBeLoggedAgain(Visit $visit): bool
     {

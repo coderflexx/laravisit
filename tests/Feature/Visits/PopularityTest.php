@@ -15,11 +15,10 @@ it('gets the total visits count', function () {
 
 it('gets records popular all time', function () {
     Post::factory()
-            ->times(2)
-            ->create()
-            ->each->visit();
+        ->times(2)
+        ->create()
+        ->each->visit();
     $popularPost = Post::factory()->create();
-
 
     Carbon::setTestNow(now()->subDays(2));
     $popularPost->visit();
@@ -36,8 +35,8 @@ it('gets records popular all time', function () {
 
 it('gets popular records between two dates', function () {
     $posts = Post::factory()
-                ->times(2)
-                ->create();
+        ->times(2)
+        ->create();
 
     Carbon::setTestNow(Carbon::createFromDate(2020, 10, 10));
     $posts->first()->visit();

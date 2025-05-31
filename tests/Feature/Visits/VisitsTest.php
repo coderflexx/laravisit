@@ -120,7 +120,6 @@ it('creates a visit with a given user', function () {
         ]);
 });
 
-
 it('gets the associated user when creating a visit', function () {
     $user = User::factory()->create();
     $post = Post::factory()->create();
@@ -230,8 +229,8 @@ it('creates visits after a carbon custom time frame', function () {
 
 it('creates visits after a non-carbon custom time frame', function () {
     $post = Post::factory()->create();
-    $time = strtotime("-1 year", time());
-    $date = date("Y-m-d", $time);
+    $time = strtotime('-1 year', time());
+    $date = date('Y-m-d', $time);
 
     $post->visit()
         ->customInterval(

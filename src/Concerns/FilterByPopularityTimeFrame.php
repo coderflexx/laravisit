@@ -13,9 +13,6 @@ trait FilterByPopularityTimeFrame
 {
     /**
      * Get the total visit count
-     *
-     * @param Builder $builder
-     * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeWithTotalVisitCount(Builder $builder): Builder
     {
@@ -24,21 +21,15 @@ trait FilterByPopularityTimeFrame
 
     /**
      * Get the popular visits all time
-     *
-     * @param Builder $builder
-     * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopePopularAllTime(Builder $builder): Builder
     {
         return $builder->withTotalVisitCount()
-                        ->orderBy('visit_count_total', 'desc');
+            ->orderBy('visit_count_total', 'desc');
     }
 
     /**
      * Get the popular visits today
-     *
-     * @param Builder $builder
-     * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopePopularToday(Builder $builder): Builder
     {
@@ -50,10 +41,6 @@ trait FilterByPopularityTimeFrame
 
     /**
      * Get the popular visits last given days
-     *
-     * @param Builder $builder
-     * @param int $days
-     * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopePopularLastDays(Builder $builder, int $days): Builder
     {
@@ -65,9 +52,6 @@ trait FilterByPopularityTimeFrame
 
     /**
      * Get the popular visits this week
-     *
-     * @param Builder $builder
-     * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopePopularThisWeek(Builder $builder): Builder
     {
@@ -79,9 +63,6 @@ trait FilterByPopularityTimeFrame
 
     /**
      * Get the popular visits last week
-     *
-     * @param Builder $builder
-     * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopePopularLastWeek(Builder $builder): Builder
     {
@@ -93,9 +74,6 @@ trait FilterByPopularityTimeFrame
 
     /**
      * Get the popular visits this month
-     *
-     * @param Builder $builder
-     * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopePopularThisMonth(Builder $builder): Builder
     {
@@ -107,9 +85,6 @@ trait FilterByPopularityTimeFrame
 
     /**
      * Get the popular visits last month
-     *
-     * @param Builder $builder
-     * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopePopularLastMonth(Builder $builder): Builder
     {
@@ -121,9 +96,6 @@ trait FilterByPopularityTimeFrame
 
     /**
      * Get the popular visits this year
-     *
-     * @param Builder $builder
-     * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopePopularThisYear(Builder $builder): Builder
     {
@@ -135,9 +107,6 @@ trait FilterByPopularityTimeFrame
 
     /**
      * Get the popular visits last year
-     *
-     * @param Builder $builder
-     * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopePopularLastYear(Builder $builder): Builder
     {
@@ -149,26 +118,17 @@ trait FilterByPopularityTimeFrame
 
     /**
      * Get the popular visits between two dates
-     *
-     * @param Builder $builder
-     * @param Carbon $from
-     * @param Carbon $to
-     * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopePopularBetween(Builder $builder, Carbon $from, Carbon $to): Builder
     {
         return $builder->whereHas('visits', $this->betweenScope($from, $to))
-                        ->withCount([
-                            'visits as visit_count_total' => $this->betweenScope($from, $to),
-                        ]);
+            ->withCount([
+                'visits as visit_count_total' => $this->betweenScope($from, $to),
+            ]);
     }
 
     /**
      * Get the popular visits between two dates
-     *
-     * @param Carbon $from
-     * @param Carbon $to
-     * @return Closure
      */
     protected function betweenScope(Carbon $from, Carbon $to): Closure
     {

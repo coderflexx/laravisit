@@ -11,13 +11,13 @@ trait SetsPendingIntervals
 {
     /**
      * @var \Carbon\Carbon
-     *
      */
     protected $interval;
 
     /**
      * Interval available functions
      * key (method) => the name of carbon interval method
+     *
      * @var array
      */
     protected static $intervalsFunc = [
@@ -30,8 +30,6 @@ trait SetsPendingIntervals
 
     /**
      * Set Time Intervals
-     *
-     * @return mixed
      */
     public function __call($name, $arguments): mixed
     {
@@ -52,9 +50,6 @@ trait SetsPendingIntervals
 
     /**
      * Set Custom Interval
-     *
-     * @param mixed $interval
-     * @return self
      */
     public function customInterval(mixed $interval): self
     {

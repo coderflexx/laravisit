@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Coderflex\Laravisit\Models\Visit
+ *
  * @property int $id
  * @property array $data
  * @property \Illuminate\Support\Carbon|null $created_at
@@ -23,7 +24,7 @@ class Visit extends Model implements CanPresent
      *
      * @var string
      */
-    protected $table = "laravisits";
+    protected $table = 'laravisits';
 
     /**
      * The attributes that are mass assignable.

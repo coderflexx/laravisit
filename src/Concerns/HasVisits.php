@@ -15,8 +15,6 @@ trait HasVisits
 
     /**
      * keep track of your pages
-     *
-     * @return PendingVisit
      */
     public function visit(): PendingVisit
     {
@@ -25,8 +23,6 @@ trait HasVisits
 
     /**
      * Has Visits relationship many to many relationship
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
      */
     public function visits(): MorphMany
     {
